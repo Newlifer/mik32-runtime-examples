@@ -1,0 +1,17 @@
+[build]
+target = "riscv32imc-unknown-none-elf"
+
+[target.riscv32imc-unknown-none-elf]
+rustflags = [
+    "-C", "link-arg=-Tlink.x",
+    "-C", "link-arg=--gc-sections",
+    "-C", "link-dead-code"
+]
+
+
+# [alias]
+# hex = "objcopy --release -- -O ihex build/firmware.hex"
+
+
+[alias]
+hex = "objcopy --release"

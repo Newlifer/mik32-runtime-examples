@@ -1,0 +1,28 @@
+[package]
+name = "mik32-minimal"
+version = "0.1.0"
+edition = "2024"
+autobins = false
+
+[dependencies]
+mik32-pac = "1.1.0"
+riscv = { version = "0.16.1", features = ["critical-section-single-hart"] }
+mik32-runtime = { git = "https://github.com/Newlifer/mik32-runtime.git", default-features = false, features = ["memory-default"] }
+
+[[example]]
+name = "gpio"
+path = "examples/gpio.rs"
+test = false
+bench = false
+
+[[example]]
+name = "gpio-interrupt"
+path = "examples/gpio_interrupt.rs"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1
+debug = 2
+lto = true
+opt-level = "s"
