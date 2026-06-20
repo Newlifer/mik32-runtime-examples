@@ -5,9 +5,11 @@ edition = "2024"
 autobins = false
 
 [dependencies]
+embedded-hal = "1.0.0"
 mik32-pac = "1.1.0"
 riscv = { version = "0.16.1", features = ["critical-section-single-hart"] }
 mik32-runtime = {version = "0.1.0", default-features = false, features = ["memory-default"] }
+hal-mik32 = { git = "https://github.com/Newlifer/hal-mik32.git" }
 
 [[example]]
 name = "gpio"
@@ -18,6 +20,12 @@ bench = false
 [[example]]
 name = "gpio-interrupt"
 path = "examples/gpio_interrupt.rs"
+test = false
+bench = false
+
+[[example]]
+name = "gpio-hal"
+path = "examples/gpio_hal.rs"
 test = false
 bench = false
 

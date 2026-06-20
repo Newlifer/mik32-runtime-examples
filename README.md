@@ -7,6 +7,7 @@
 ## Примеры
 
 - `gpio` — включает светодиод на 0.9 GPIO пин.
+- `gpio-hal` — включает тот же светодиод через GPIO API из `hal-mik32`.
 - `gpio-interrupt` — включает светодиод на 0.9 GPIO пин по прерыванию от таймера (timer32 0).
 
 Исходники находятся в каталоге [`examples`](examples).
@@ -25,6 +26,7 @@ cargo install cargo-binutils just
 
 ```console
 cargo build --release --example gpio
+cargo build --release --example gpio-hal
 cargo build --release --example gpio-interrupt
 ```
 
