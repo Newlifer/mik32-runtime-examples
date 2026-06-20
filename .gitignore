@@ -1,3 +1,4 @@
 /target/
 /.runtime-reference/
 /build/
+build/firmware.hex

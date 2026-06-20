@@ -29,6 +29,12 @@ path = "examples/gpio_hal.rs"
 test = false
 bench = false
 
+[[example]]
+name = "usart"
+path = "examples/usart.rs"
+test = false
+bench = false
+
 [profile.release]
 codegen-units = 1
 debug = 2
