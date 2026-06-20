@@ -12,6 +12,8 @@
 - `usart` — периодически отправляет строку через USART1 (`PORT_1_9`, 115200 8N1).
 - `tsens` — периодически измеряет температуру встроенным датчиком и выводит
   результат через USART1 (`PORT_1_9`, 115200 8N1).
+- `i2c-master` — периодически отправляет байт ведущим I²C1 на адрес `0x36`
+  (`PORT_1_12` — SCL, `PORT_1_13` — SDA).
 
 Исходники находятся в каталоге [`examples`](examples).
 
@@ -33,6 +35,7 @@ cargo build --release --example gpio-hal
 cargo build --release --example gpio-interrupt
 cargo build --release --example usart
 cargo build --release --example tsens
+cargo build --release --example i2c-master
 ```
 
 Или через `just`:
