@@ -35,6 +35,12 @@ path = "examples/usart.rs"
 test = false
 bench = false
 
+[[example]]
+name = "tsens"
+path = "examples/tsens.rs"
+test = false
+bench = false
+
 [profile.release]
 codegen-units = 1
 debug = 2

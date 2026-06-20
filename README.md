@@ -10,6 +10,8 @@
 - `gpio-hal` — включает тот же светодиод через GPIO API из `hal-mik32`.
 - `gpio-interrupt` — включает светодиод на 0.9 GPIO пин по прерыванию от таймера (timer32 0).
 - `usart` — периодически отправляет строку через USART1 (`PORT_1_9`, 115200 8N1).
+- `tsens` — периодически измеряет температуру встроенным датчиком и выводит
+  результат через USART1 (`PORT_1_9`, 115200 8N1).
 
 Исходники находятся в каталоге [`examples`](examples).
 
@@ -30,6 +32,7 @@ cargo build --release --example gpio
 cargo build --release --example gpio-hal
 cargo build --release --example gpio-interrupt
 cargo build --release --example usart
+cargo build --release --example tsens
 ```
 
 Или через `just`:
