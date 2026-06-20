@@ -37,7 +37,8 @@ dependencies = [
 [[package]]
 name = "mik32-runtime"
 version = "0.1.0"
-source = "git+https://github.com/Newlifer/mik32-runtime.git#b056af3ba010b54709da6269d1af9ea8a90d2a63"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "db2366ece80c63889a6898a4fcaf2d7a83169fd63e41a94cf2f8eb1165d8ad60"
 dependencies = [
  "mik32-runtime-macros",
 ]
@@ -45,7 +46,8 @@ dependencies = [
 [[package]]
 name = "mik32-runtime-macros"
 version = "0.1.0"
-source = "git+https://github.com/Newlifer/mik32-runtime.git#b056af3ba010b54709da6269d1af9ea8a90d2a63"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e8ce9b3f1967880a5944431dc265b18c636b28b9f94ab4876fc7c4c10d795ef6"
 dependencies = [
  "proc-macro2",
  "quote",

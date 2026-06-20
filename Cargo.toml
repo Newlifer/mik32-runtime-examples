@@ -7,7 +7,7 @@ autobins = false
 [dependencies]
 mik32-pac = "1.1.0"
 riscv = { version = "0.16.1", features = ["critical-section-single-hart"] }
-mik32-runtime = { git = "https://github.com/Newlifer/mik32-runtime.git", default-features = false, features = ["memory-default"] }
+mik32-runtime = {version = "0.1.0", default-features = false, features = ["memory-default"] }
 
 [[example]]
 name = "gpio"
