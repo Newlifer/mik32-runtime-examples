@@ -44,7 +44,8 @@ fn main() -> ! {
     let mut i2c = I2c::new(
         peripherals.i2c_1,
         Config::default().as_master().timeout(100_000),
-    );
+    )
+    .unwrap();
 
     let mut counter = 0u8;
 
