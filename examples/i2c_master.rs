@@ -51,7 +51,8 @@ fn main() -> ! {
 
     loop {
         let payload = [counter];
-        let _ = i2c.write(SLAVE_ADDRESS, &payload);
+        let mut response = [0u8];
+        let _ = i2c.write_read(SLAVE_ADDRESS, &payload, &mut response);
         counter = counter.wrapping_add(1);
         delay(TRANSFER_DELAY_SPINS);
     }

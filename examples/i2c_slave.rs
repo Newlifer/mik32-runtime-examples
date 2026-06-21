@@ -40,6 +40,7 @@ fn main() -> ! {
         Config::default()
             .as_slave()
             .primary_address(SLAVE_ADDRESS)
+            .underflow_fill(0x00)
             .timeout(100_000),
     )
     .unwrap();
@@ -54,6 +55,7 @@ fn main() -> ! {
 
         match request.direction {
             SlaveDirection::Receive => {
+                let _ = i2c.slave_ack();
                 if let Ok(transfer) = i2c.slave_receive(&mut receive_buffer) {
                     if transfer.count != 0 {
                         value = receive_buffer[0];
