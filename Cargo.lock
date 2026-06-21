@@ -78,7 +78,6 @@ checksum = "1d758ba1b47b00caf47f24925c0074ecb20d6dfcffe7f6d53395c0465674841a"
 [[package]]
 name = "hal-mik32"
 version = "0.1.0"
-source = "git+https://github.com/Newlifer/hal-mik32.git#b26cc4d1e700754b82c53c71502922709d6c998e"
 dependencies = [
  "critical-section",
  "embedded-dma",

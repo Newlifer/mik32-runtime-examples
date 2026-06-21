@@ -41,21 +41,6 @@ fn main() -> ! {
         .pad1_pupd()
         .modify(|_, w| w.port_1_12().pull_up().port_1_13().pull_up());
 
-    // Approx. 100 kHz with a 32 MHz peripheral clock.
-    // The current hal-mik32 API does not expose TIMINGR yet.
-    peripherals.i2c_1.timingr().write(|w| unsafe {
-        w.presc()
-            .bits(3)
-            .scldel()
-            .bits(4)
-            .sdadel()
-            .bits(2)
-            .sclh()
-            .bits(39)
-            .scll()
-            .bits(39)
-    });
-
     let mut i2c = I2c::new(
         peripherals.i2c_1,
         Config::default().as_master().timeout(100_000),
