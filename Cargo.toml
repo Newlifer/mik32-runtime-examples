@@ -47,6 +47,12 @@ path = "examples/i2c_master.rs"
 test = false
 bench = false
 
+[[example]]
+name = "i2c-slave"
+path = "examples/i2c_slave.rs"
+test = false
+bench = false
+
 [profile.release]
 codegen-units = 1
 debug = 2

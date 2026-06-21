@@ -3,7 +3,9 @@
 
 use core::{hint::spin_loop, panic::PanicInfo};
 use hal_mik32::{
-    i2c::{Config, I2c, SlaveDirection},
+    i2c::{
+        AddressMatchSource, Config, I2c, SecondaryAddress, SecondaryAddressMask, SlaveDirection,
+    },
     rcc::RCC,
 };
 use mik32_pac::Peripherals;
@@ -11,6 +13,7 @@ use mik32_runtime::entry;
 use riscv as _;
 
 const SLAVE_ADDRESS: u16 = 0x36;
+const SECONDARY_ADDRESS: u8 = 0x38;
 
 #[entry]
 fn main() -> ! {
@@ -40,12 +43,19 @@ fn main() -> ! {
         Config::default()
             .as_slave()
             .primary_address(SLAVE_ADDRESS)
+            // OA2 accepts both 0x38 and 0x39.
+            .secondary_address(SecondaryAddress::new(
+                SECONDARY_ADDRESS,
+                SecondaryAddressMask::IgnoreOneBit,
+            ))
+            .general_call(true)
             .underflow_fill(0x00)
             .timeout(100_000),
     )
     .unwrap();
 
     let mut value = 0u8;
+    let mut source = 0u8;
     let mut receive_buffer = [0u8; 16];
 
     loop {
@@ -55,6 +65,11 @@ fn main() -> ! {
 
         match request.direction {
             SlaveDirection::Receive => {
+                source = match request.source {
+                    AddressMatchSource::Primary => 1,
+                    AddressMatchSource::Secondary => 2,
+                    AddressMatchSource::GeneralCall => 3,
+                };
                 let _ = i2c.slave_ack();
                 if let Ok(transfer) = i2c.slave_receive(&mut receive_buffer) {
                     if transfer.count != 0 {
@@ -63,7 +78,7 @@ fn main() -> ! {
                 }
             }
             SlaveDirection::Transmit => {
-                let _ = i2c.slave_transmit(&[value]);
+                let _ = i2c.slave_transmit(&[source, value]);
             }
         }
     }
