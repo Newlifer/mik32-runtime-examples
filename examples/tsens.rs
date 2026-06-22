@@ -41,7 +41,8 @@ fn main() -> ! {
         peripherals.usart_1,
         (tx_pin, rx_pin),
         UsartConfig::default(),
-    );
+    )
+    .unwrap();
     let (mut tx, _rx) = serial.split();
 
     let sensor_config = TsensConfig::default()

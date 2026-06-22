@@ -27,7 +27,7 @@ fn main() -> ! {
     // USART1: PORT_1_9 is TX, PORT_1_8 is RX.
     let tx = Pin09::new().into_serial_port();
     let rx = Pin08::new().into_serial_port();
-    let serial = Serial::new(peripherals.usart_1, (tx, rx), Config::default());
+    let serial = Serial::new(peripherals.usart_1, (tx, rx), Config::default()).unwrap();
     let (mut tx, _rx) = serial.split();
 
     loop {
