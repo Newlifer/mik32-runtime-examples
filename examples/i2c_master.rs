@@ -18,7 +18,7 @@ const TRANSFER_DELAY_SPINS: u32 = 1_000_000;
 fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
 
-    RCC::init(&RCC::default());
+    RCC::init(&RCC::default()).unwrap();
 
     peripherals
         .pm

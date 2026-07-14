@@ -19,7 +19,7 @@ const SECONDARY_ADDRESS: u8 = 0x38;
 fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
 
-    RCC::init(&RCC::default());
+    RCC::init(&RCC::default()).unwrap();
 
     peripherals
         .pm

@@ -12,7 +12,7 @@ use riscv as _;
 fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
 
-    RCC::init(&RCC::default());
+    RCC::init(&RCC::default()).unwrap();
 
     peripherals
         .pm

@@ -10,7 +10,7 @@ embedded-hal-nb = "1.0.0"
 mik32-pac = "1.1.0"
 riscv = "0.16.1"
 mik32-runtime = { version = "0.4.0", default-features = false, features = ["memory-default", "critical-section"] }
-hal-mik32 = { version = "0.2.1" }
+hal-mik32 = { version = "0.2.2" }
 
 [[example]]
 name = "gpio"

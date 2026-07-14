@@ -21,7 +21,7 @@ fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
 
     let rcc = RCC::default();
-    RCC::init(&rcc);
+    let clocks = RCC::init(&rcc).unwrap();
 
     // TSENS is part of the analog register block, so its APB clock must be on.
     peripherals
@@ -49,7 +49,7 @@ fn main() -> ! {
         .clock_from_source(ClockSource::OSC32K)
         .with_frequency(SENSOR_CLOCK_HZ);
 
-    let mut sensor = match TSENS::new(peripherals.tsens, &rcc.clocks, sensor_config) {
+    let mut sensor = match TSENS::new(peripherals.tsens, &clocks, sensor_config) {
         Ok(sensor) => sensor,
         Err(error) => {
             let _ = writeln!(tx, "TSENS init error: {:?}", error);

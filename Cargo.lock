@@ -67,9 +67,9 @@ checksum = "1d758ba1b47b00caf47f24925c0074ecb20d6dfcffe7f6d53395c0465674841a"
 
 [[package]]
 name = "hal-mik32"
-version = "0.2.1"
+version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a53e91afd2afaf00f2f5c29e3344d0cc2bce27a89bb708b8b6bd6ad5f4b2524e"
+checksum = "fd9ef8bc0eddb39fa540bfda80ec39208fd54ac3fbcd7eccc99d29b9968f689f"
 dependencies = [
  "critical-section",
  "embedded-dma",
